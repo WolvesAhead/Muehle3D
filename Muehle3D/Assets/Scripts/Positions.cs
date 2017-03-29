@@ -35,7 +35,7 @@ public class Positions : MonoBehaviour {
     void Start() {
 
 
-        for (int m = 0; m < 3; m++)
+        for (int m = 0; m < 3; m++) //Schreibt die Positionen der Spielpunkte in ein Array durch den Namen
         {
             for (int n = 0; n < 8; n++)
             {
@@ -44,7 +44,7 @@ public class Positions : MonoBehaviour {
             }
         }
 
-        for (int m = 0; m < 3; m++)
+        for (int m = 0; m < 3; m++) //Erstellt ein Array welches mit einem char S-Schwarz / W-weiß oder /n-nicht belegt angibt wie viele Felder besetzt sind
         {
             for (int n = 0; n < 8; n++)
             {
@@ -55,7 +55,7 @@ public class Positions : MonoBehaviour {
 
 
 
-        for (int m = 0; m < 3; m++)
+        for (int m = 0; m < 3; m++) //Erstell Array für die Steine welche sich in einer Mühle befinden
         {
             for (int n = 0; n < 8; n++)
             {
@@ -72,7 +72,7 @@ public class Positions : MonoBehaviour {
 
     }
 
-    public static void findMuehleSwz()
+    public static void findMuehleSwz() //Sucht einer "schwarze" Mühle
     {
         #region Muehle Swz
 
@@ -121,7 +121,7 @@ public class Positions : MonoBehaviour {
 
 
 
- public static void  findMuehleWss()
+ public static void  findMuehleWss() //sucht eine "weiße" Mühle
     { 
 
 
@@ -169,7 +169,7 @@ public class Positions : MonoBehaviour {
         #endregion
 }
 
- public static void eraseMuehle()
+ public static void eraseMuehle() //Löscht alle gefundenen Mühlen
     {
         for(int i = 0; i < 3; i++)
         {

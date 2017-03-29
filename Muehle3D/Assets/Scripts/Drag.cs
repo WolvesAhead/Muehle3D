@@ -27,7 +27,7 @@ public class Drag : MonoBehaviour {
         {
 
 
-            dist = Camera.main.WorldToScreenPoint(transform.position);
+            dist = Camera.main.WorldToScreenPoint(transform.position);              //berechnet Distanz zwischen Maus und Kamera
             posX = Input.mousePosition.x - dist.x;
             posY = Input.mousePosition.y - dist.y;
 
@@ -39,10 +39,10 @@ public class Drag : MonoBehaviour {
     {   
         if (Gameplay.player1Turn == true && Positions.foundMuehleSwz == false)
         {
-            Vector3 curPos = new Vector3(Input.mousePosition.x - posX, Input.mousePosition.y - posY, dist.z);
+            Vector3 curPos = new Vector3(Input.mousePosition.x - posX, Input.mousePosition.y - posY, dist.z); //Neue Position wird berechnet
 
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(curPos);
-            transform.position = worldPos;
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(curPos); //Wandelt neue Position in ScreentoWorld um
+            transform.position = worldPos; //Gibt dem Objekt die neue Position
         }
     }
 
@@ -50,33 +50,20 @@ public class Drag : MonoBehaviour {
 
     private void OnMouseUp()
     {
-        if (Gameplay.player1Turn == true && Gameplay.player1PhaseOne && Positions.foundMuehleSwz == false)
+        if (Gameplay.player1Turn == true && Gameplay.player1PhaseOne && Positions.foundMuehleSwz == false) // Phase 1 Drag
         {
 
 
             if (Drop.colTrue == true)
             {        
-                find2Index();              
+                find2Index();  //index finden  
 
-                /*if (oldMuehleSwz == false)
-                {
-                    Positions.findMuehleSwz();
-                    if (Positions.foundMuehleSwz)
-                    {
-                        oldMuehleSwz = true;
-                    }
-                    if (Positions.foundMuehleSwz == false)
-                    {
-                        oldMuehleSwz = false;
-                    }
-                    
-                }
-                */
+               
 
                 if (Positions.colourArray2dim[Positions.indexRing, Positions.indexPlace] != 'n')
                 {
                     
-                    transform.position = orgPos;
+                    transform.position = orgPos; // wieder auf originale Position legen
                     Drop.colTrue = false;
                 }
               
@@ -84,18 +71,18 @@ public class Drag : MonoBehaviour {
                 {
                     
                     setIndexOld(); //Alte Position bereinigen
-                    transform.position = nextPos;
+                    transform.position = nextPos; // Auf nächste Position legen
                     Gameplay.Stonesleft--;
 
-                    Positions.colourArray2dim[Positions.indexRing, Positions.indexPlace] = 's';
-                    Positions.eraseMuehle();
+                    Positions.colourArray2dim[Positions.indexRing, Positions.indexPlace] = 's'; // Die Position mit einem char für schwarzen STein markieren
+                    Positions.eraseMuehle(); //Alle Mühlen löschen
 
-                    if(oldMuehleSwz == false)
-                    Positions.findMuehleSwz();
+                    
+                    Positions.findMuehleSwz(); // schwarze Mühlen suchen
                  
-                    if (Positions.foundMuehleSwz == false || oldMuehleSwz )
+                    if (Positions.foundMuehleSwz == false )
                     {
-                        Gameplay.Player2Turn();
+                        Gameplay.Player2Turn(); //Player 2 is dran
                        
                     }
                     Drop.colTrue = false;
@@ -112,24 +99,24 @@ public class Drag : MonoBehaviour {
             }
         }
 
-        if (Gameplay.player1Turn == true && Gameplay.player1PhaseTwo && Positions.foundMuehleSwz == false)
+        if (Gameplay.player1Turn == true && Gameplay.player1PhaseTwo && Positions.foundMuehleSwz == false) //Phase 2
         {
             if (Drop.colTrue == true)
             {
-                find2IndexOrg();
-                find2Index();
-                isNearEven = findNearEven(Positions.indexRingOrg);
-                Debug.Log("Ring Even: " + Positions.indexRingOrg);
-                isNearOdd = findNearOdd(Positions.indexRingOrg);
-                Debug.Log("Ring Odd: " + Positions.indexRingOrg);
+                find2IndexOrg();  //ALten Index finden
+                find2Index();       // Neuen Index finden
+                isNearEven = findNearEven(Positions.indexRingOrg); // Die möglichen Positionen in der Nähe suchen
+                //Debug.Log("Ring Even: " + Positions.indexRingOrg);
+                isNearOdd = findNearOdd(Positions.indexRingOrg);    // Möglichen Positionen in der Nähe finden
+                /*Debug.Log("Ring Odd: " + Positions.indexRingOrg);
                 Debug.Log("isNearOdd: " + isNearOdd);
                 Debug.Log("isNearEven: " + isNearEven);
-
+                */
                 if (Positions.colourArray2dim[Positions.indexRing, Positions.indexPlace] != 'n' || ( isNearEven == false && isNearOdd == false))
                 {
 
-                    transform.position = orgPos;
-                    Debug.Log("Orgpos benutzt");
+                    transform.position = orgPos; //Stein auf org. Position 
+                    //Debug.Log("Orgpos benutzt");
                     Drop.colTrue = false;
                     isNearEven = false;
                     isNearOdd = false;
@@ -139,7 +126,7 @@ public class Drag : MonoBehaviour {
                 {
                     
                     setIndexOld(); //Alte Position bereinigen
-                    transform.position = nextPos;
+                    transform.position = nextPos; 
 
                     isNearEven = false;
                     isNearOdd = false;
@@ -169,7 +156,7 @@ public class Drag : MonoBehaviour {
             }
         }
 
-        if (Gameplay.player1Turn == true && Gameplay.player1PhaseThree && Positions.foundMuehleSwz == false)
+        if (Gameplay.player1Turn == true && Gameplay.player1PhaseThree && Positions.foundMuehleSwz == false) //Phase 3
         {
             if (Drop.colTrue == true)
             {
@@ -213,7 +200,7 @@ public class Drag : MonoBehaviour {
 
     }
 
-    private void find2Index()
+    private void find2Index() //Neuen Index für Ring und Place finden
     {
         Positions.indexRing = 0;
         Positions.indexPlace = 0;
@@ -233,7 +220,7 @@ public class Drag : MonoBehaviour {
         }
     }
 
-    private void find2IndexOrg()
+    private void find2IndexOrg() // Alten Index finden
     {
         Positions.indexRingOrg = 0;
         Positions.indexPlaceOrg = 0;
@@ -284,7 +271,7 @@ public class Drag : MonoBehaviour {
      */
     
 
-    private bool findNearEven(int ring)
+    private bool findNearEven(int ring) //Falls Stein auf gerade Position mögliche Punkte herausfinden
     {
         
        
@@ -295,14 +282,14 @@ public class Drag : MonoBehaviour {
 
                     if (Positions.indexRing == ring && Positions.indexPlace == 0)
                     {
-                        Debug.Log("Gerade 0 ");
+                        //Debug.Log("Gerade 0 ");
                         return true;
                     }
                     
 
                         if (Positions.indexRing == ring && Positions.indexPlace  == 7)
                     {
-                        Debug.Log("Gerade 7 ");
+                        //Debug.Log("Gerade 7 ");
                         return true;
                     }
 
@@ -366,7 +353,7 @@ public class Drag : MonoBehaviour {
         return false;
     }
 
-    private bool findNearOdd(int ring)
+    private bool findNearOdd(int ring) //Falls Stein auf ungerader Position mögliche Punkte herausfinden
     {
 
         if (ring == 0)
@@ -676,7 +663,7 @@ public class Drag : MonoBehaviour {
 
             }
 
-            /* for (int p = 1; p < 8; p=p+2)
+            /* for (int p = 1; p < 8; p=p+2)            //Versuch für die For-Schleife
              {
                  if (p % 2 != 0)
                  {
@@ -728,7 +715,7 @@ public class Drag : MonoBehaviour {
 
     
 
-    private void setIndexOld()
+    private void setIndexOld() //Alte Position auf nicht belegt ändern
     {
         for (int i = 0; i < 3; i++)
         {
@@ -754,19 +741,12 @@ public class Drag : MonoBehaviour {
         //Debug.Log("Index: " + Positions.index);
         //  Debug.Log("Maus Y: "+Input.mousePosition.y);
 
-        Debug.Log("OMS"+oldMuehleSwz);
+        //Debug.Log("OMS"+oldMuehleSwz);
         if (Gameplay.player1Turn == true || Drop.colTrue == true && Gameplay.player2Turn==false )
         {
-            if (Input.mousePosition.y > 900)// && Input.mousePosition.y >700)
+            if (Input.mousePosition.y > 750) //Wenn Maus Y über 750 dann Kamera bewegen
             {
-                Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, new Vector3(0f, 8f, -1), 1f * Time.deltaTime);
-            }
-
-           
-
-            if (Input.mousePosition.y > 400)
-            {
-                Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, new Vector3(0f, 8f, -8), 1f * Time.deltaTime);
+                Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, new Vector3(0f, 8f, -3), 1f * Time.deltaTime);
             }
 
             if (Input.mousePosition.y < 50)

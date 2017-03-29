@@ -14,22 +14,22 @@ public class MenuScript : MonoBehaviour {
 		
 	}
 
-    public void Highscore()
+    public void Highscore()//Lädt Highscore Szene
     {
         Application.LoadLevel(3);
     }
-    public void OnClick()
+    public void OnClick() //Lädt SPiele Szene
     {
         Application.LoadLevel(2);
     }
 
-    public void Rules()
+    public void Rules()//Lädt Regeln
     {
         Application.LoadLevel(1);
     }
 
 
-    public void Back()
+    public void Back() // Geht ins Menü zurück
     {
         Application.LoadLevel(0);
     }

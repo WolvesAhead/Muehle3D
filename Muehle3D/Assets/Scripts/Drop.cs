@@ -20,7 +20,7 @@ public class Drop : MonoBehaviour {
 
   private void OnTriggerEnter(Collider other)
     {
-        if (Gameplay.player1Turn == true)
+        if (Gameplay.player1Turn == true) // Wenn der Stein mit einem Collider der Punkte in Berührung kommt wird das die nächste Position
         {
             colTrue = true;
            // Debug.Log("Neue NextPos"+Drag.nextPos);

@@ -35,7 +35,7 @@ public class HighscoreList : MonoBehaviour {
 
             //Write some text to the test.txt file
             StreamWriter writer = new StreamWriter(path, true);
-            writer.WriteLine("Name: "+WinNameText.text+"     Zuege: "+Gameplay.WinTurn);
+            writer.WriteLine("Name: "+WinNameText.text+"     Zuege: "+Gameplay.WinTurn); //Schreibt Name und Anzahl der benötigten Züge in die Text-Datei
             writer.Close();
         }
 

@@ -9,12 +9,24 @@ public class ReadHighscore : MonoBehaviour {
     public Text Highscores;
     string text;
 
+
+    /*
+     * Noch nicht funktionsfähig
+     * 
+     * 
+     * */
+
+
+
+
+
+
     // Use this for initialization
     void Start () {
 
         string path = "Assets/Resources/Highscores.txt";
 
-        //Read the text from directly from the test.txt file
+       
         StreamReader reader = new StreamReader(path);
         text = reader.ReadLine();
         Highscores.text = text;

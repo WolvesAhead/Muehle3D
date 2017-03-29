@@ -1,0 +1,38 @@
+Sie programmieren Mühle
+http://www.brettspielnetz.de/spielregeln/muehle.php
+
+Unity 3D
+Maussteuerung (Quelle: Drag and// Drop https://www.youtube.com/watch?v=NMt6Ibxa_XQ&t=0s)
+
+
+2 Spielermodus kein Computer
+
+Züge aufzeichnen (Positionsliste etc.)
+
+Highscore (Von hier aus kann die Positionsliste des jeweiligen Spiels angesehen werden)
+
+-- Anzahl von Zügen bis zum Gewinn
+
+
+Menu mit Regeln
+Sound
+
+
+
+Mühlesteine originalgetreu (Ohne Rundungen) mittels Boolscher Opertionen in Unity (https://www.youtube.com/watch?v=TSNadFy9W_0)
+		Nicht Möglich weil 35$ und nicht mehr im Store
+
+Optional:
+Nachspielen von Partien (wie hier: http://www.chessgames.com/perl/chessgame?gid=1259009)
+Kameraperspektive aus Spielersicht mit animierter Fahrt bei Spielerwechsel
+
+
+
+
+
+Quellen:
+Bilddatei Brett http://www.spielen.de/uploads/image/43609/546f3cec60b94.jpeg
+Koordinaten  https://de.wikipedia.org/wiki/Spielnotation#/media/File:Nine_Men%27s_Morris_board_with_coordinates.svg
+Snap to Grid :https://forum.unity3d.com/threads/in-game-snap-to-grid.77029/
+Drag  https://www.youtube.com/watch?v=NMt6Ibxa_XQ&t=0s
+Break Sound: https://www.youtube.com/watch?v=ZPoXYOSyQ98

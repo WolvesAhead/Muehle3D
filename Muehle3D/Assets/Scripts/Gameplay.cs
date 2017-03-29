@@ -31,7 +31,7 @@ public class Gameplay : MonoBehaviour
 
     void Start()
     {
-        Weiß_wins = GameObject.Find("Weiß_wins").GetComponent<Text>();
+        Weiß_wins = GameObject.Find("Weiß_wins").GetComponent<Text>();                 //Abschluss Text für Gewinner
         Schwarz_wins = GameObject.Find("Schwarz_wins").GetComponent<Text>();
     }
 
@@ -42,7 +42,7 @@ public class Gameplay : MonoBehaviour
 
         //Debug.Log("StonesleftSwz:" + StonesleftSwz);
         //Debug.Log("StonesleftWss:" + StonesleftWss);
-        if (Input.GetMouseButtonDown(2) && player1TurnOver && player1Turn )
+    /*    if (Input.GetMouseButtonDown(2) && player1TurnOver && player1Turn )
         {
             player2TurnOver = false;
             Player2Turn();
@@ -53,9 +53,9 @@ public class Gameplay : MonoBehaviour
             player1TurnOver = false;
             Player1Turn();
         }
-
+*/
         // Player1Turn();
-        if (Stonesleft == 0)
+        if (Stonesleft == 0)  //Zählt wann Pahse 1 vorbei ist
         {
             player1PhaseOne = false;
             player2PhaseOne = false;
@@ -66,12 +66,12 @@ public class Gameplay : MonoBehaviour
         }
 
 
-        if (StonesleftSwz <= 4)
+        if (StonesleftSwz <= 3)  //Prüft ob Phase 3 gestartet wird
         {
             player1PhaseThree = true;
             player1PhaseTwo = false;
    
-            if (StonesleftSwz < 3)
+            if (StonesleftSwz < 3) //Prüft ob Verloren
             {
                 Debug.Log("######################Schwarz hat verloren###############################");
                Weiß_wins.enabled = true;
@@ -81,7 +81,7 @@ public class Gameplay : MonoBehaviour
             }
         }
 
-        if(StonesleftWss <= 4)
+        if(StonesleftWss <= 3) 
         {
 
             player2PhaseThree = true;
@@ -107,11 +107,11 @@ public class Gameplay : MonoBehaviour
         
        
        
-            Camera.main.transform.localPosition = new Vector3(0, 8, -10);
-            Camera.main.transform.localRotation = Quaternion.Euler(30, 0, 0);
+            Camera.main.transform.localPosition = new Vector3(0, 8, -10);               //Positioniert Kamera neu
+            Camera.main.transform.localRotation = Quaternion.Euler(30, 0, 0);           //Passt WInkel an
 
 
-            countTurn += 1;
+        countTurn += 1;         // Zählt Anzahl der Runden
 
         Positions.foundMuehleSwz = false;
         Positions.foundMuehleWss = false;
